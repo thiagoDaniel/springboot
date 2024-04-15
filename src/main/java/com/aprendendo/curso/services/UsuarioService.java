@@ -1,6 +1,7 @@
 package com.aprendendo.curso.services;
 
 import java.util.List;
+
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,10 @@ public class UsuarioService {
 	
 	public Usuario findById(Long id) {
 		Optional<Usuario> obj = repository.findById(id);
-		return obj.get();
-		
+		return obj.get();		
 	}
-
+	
+	public Usuario insert(Usuario obj) {
+		return repository.save(obj);
+	}
 }
