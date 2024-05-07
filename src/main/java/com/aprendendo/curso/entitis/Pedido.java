@@ -1,13 +1,13 @@
 package com.aprendendo.curso.entitis;
 
 import java.io.Serializable;
+
 import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 
 import com.aprendendo.curso.entitis.enuns.PedidoStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,6 +18,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+
 
 @Entity
 @Table(name = "tb_pedido")
@@ -100,6 +101,16 @@ public class Pedido implements Serializable {
 	public Set<PedidoItem> getItems() {
 		return items;
 	}
+	public Double getTotal() {
+		double sum = 0.0;
+		for (PedidoItem x : items) {
+			sum += x.getSubTotal();
+		}
+		return sum;
+		
+	}
+		
+	
 
 	@Override
 	public int hashCode() {

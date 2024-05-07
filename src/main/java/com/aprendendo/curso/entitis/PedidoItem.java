@@ -4,10 +4,10 @@ import java.io.Serializable;
 
 import com.aprendendo.curso.entitis.pk.PedidoItemPK;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+
 
 @Entity
 @Table(name = "tb_pedido_item")
@@ -63,7 +63,10 @@ public class PedidoItem implements Serializable {
 	public void setPrice(Double price) {
 		this.price = price;
 	}
-
+	public Double getSubTotal() {
+		return price * quantity;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
